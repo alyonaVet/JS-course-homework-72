@@ -47,7 +47,7 @@ const DishForm: React.FC<DishProps> = ({onSubmit, existingDish, isLoading}) => {
           name="title"
           id="title"
           required
-          className="form-control w-50"
+          className="form-control w-50 mb-3"
           onChange={changeDish}
           value={dish.title}
         />
@@ -61,7 +61,7 @@ const DishForm: React.FC<DishProps> = ({onSubmit, existingDish, isLoading}) => {
           id="price"
           required
           min="1"
-          className="form-control w-50"
+          className="form-control w-50 mb-3"
           onChange={changeDish}
           value={dish.price}
         />
@@ -73,7 +73,7 @@ const DishForm: React.FC<DishProps> = ({onSubmit, existingDish, isLoading}) => {
           name="image"
           id="image"
           required
-          className="form-control w-50"
+          className="form-control w-50 mb-3"
           onChange={changeDish}
           value={dish.image}
         />
