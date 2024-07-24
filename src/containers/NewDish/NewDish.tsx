@@ -13,7 +13,7 @@ const NewDish = () => {
   const onSubmit = async (dish: ApiDish) => {
     try {
       await dispatch(createDish(dish)).unwrap();
-      navigate('/admin');
+      navigate('/admin/dishes');
     } catch (error) {
       console.error('Could not create dish!');
     }
@@ -21,8 +21,10 @@ const NewDish = () => {
 
   return (
     <div className="container mt-3">
-      <DishForm onSubmit={onSubmit} isLoading={isCreating} />
-      
+      <DishForm
+        onSubmit={onSubmit}
+        isLoading={isCreating}
+      />
     </div>
   );
 };
