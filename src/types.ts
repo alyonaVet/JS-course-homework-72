@@ -16,3 +16,8 @@ export interface DishFormType {
   price: string;
   image: string;
 }
+
+export interface UpdateDishType {
+  id: string;
+  dish: ApiDish;
+}
