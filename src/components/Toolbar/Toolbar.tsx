@@ -20,7 +20,7 @@ const Toolbar = () => {
     <nav className="navbar navbar-dark bg-primary">
       <div className="container d-flex align-items-center justify-content-between">
         <div className="d-flex align-items-center">
-          <NavLink to="/admin" className="navbar-brand">Turtle Pizza Admin</NavLink>
+          <NavLink to="/admin/dishes" className="navbar-brand">Turtle Pizza Admin</NavLink>
         </div>
         <ul className="navbar-nav d-flex flex-row gap-3 flex-nowrap">
           <li className="nav-item">
