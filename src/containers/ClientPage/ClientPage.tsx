@@ -42,9 +42,6 @@ const ClientPage = () => {
         </div>
         <div className="mt-3 pt-3 d-flex justify-content-between align-items-center border-top">
           <div>Order total: {totalAmount}</div>
-          {cartDishes.map((cartDish, key) => (
-            <p key={key}>{cartDish.dish.title} : {cartDish.amount}</p>
-          ))}
           <button type="button" className="btn btn-primary" onClick={() => setShowModal(true)}>Checkout</button>
         </div>
       </div>
