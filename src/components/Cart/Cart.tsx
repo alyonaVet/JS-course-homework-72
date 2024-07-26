@@ -1,24 +1,34 @@
 import CartDishes from './CartDishes';
 import {useAppDispatch, useAppSelector} from '../../app/hooks';
-import { selectCartDishes} from '../../features/cart/cartSlice';
+import {clearCartDishes, selectCartDishes} from '../../features/cart/cartSlice';
 import React from 'react';
+import {addOrder} from '../../features/cart/cartThunk';
 
 interface Props {
-  onClose: React.MouseEventHandler;
+  onClose: VoidFunction;
 }
 
 const Cart: React.FC<Props> = ({onClose}) => {
   const cartDishes = useAppSelector(selectCartDishes);
   const dispatch = useAppDispatch();
 
+  const makeOrderObj = () => {
+
+    return cartDishes.reduce(
+      (acc, cartDish) => ({...acc, [cartDish.dish.id]: cartDish.amount}), {}
+    );
+
+  };
 
   const createOrder = async () => {
     try {
-      await dispatch(createOrder);
+      await dispatch(addOrder(makeOrderObj()));
+      dispatch(clearCartDishes());
+      onClose();
     } catch (error) {
       console.error('Could not create dish!');
     }
-  }
+  };
 
   let cart = (
     <div className="mt-5 mb-5 text-center">Your cart is empty. Add something!</div>
