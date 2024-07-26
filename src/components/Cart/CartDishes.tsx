@@ -3,12 +3,12 @@ import CartItem from './CartItem';
 import { CartDish } from '../../types';
 import {useAppDispatch} from '../../app/hooks';
 import {deleteDish} from '../../features/cart/cartSlice';
+import {delivery} from '../../constants';
 
 interface Props {
   cartDishes: CartDish[];
 }
 
-let delivery = 150;
 
 const CartDishes: React.FC<Props> = ({ cartDishes }) => {
   const dispatch = useAppDispatch();
