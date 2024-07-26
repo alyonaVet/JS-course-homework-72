@@ -24,7 +24,6 @@ const Dishes = () => {
     await dispatch(fetchDishes());
   };
 
-
   return (
     <>
       {dishesLoading ? (
@@ -34,6 +33,7 @@ const Dishes = () => {
           <DishItem
             key={dish.id}
             dish={dish}
+            onAdd={() => null}
             children={<Buttons dish={dish} onDelete={() => onDeleteDish(dish.id)} deleteLoading={deleteLoading}  />}          />
         ))
       )}
