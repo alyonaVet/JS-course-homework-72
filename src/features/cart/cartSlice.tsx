@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {CartDish, Dish} from '../../types';
-import {createOrder} from './cartThunk';
+import {addOrder} from './cartThunk';
 
 export interface CartState {
   cartDishes: CartDish[];
@@ -34,17 +34,20 @@ const cartSlice = createSlice({
       state.cartDishes = state.cartDishes.filter(
         cartDish => cartDish.dish.id !== dishToDelete.dish.id
       );
+    },
+    clearCartDishes: (state) => {
+      state.cartDishes = [];
     }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(createOrder.pending, (state) => {
+      .addCase(addOrder.pending, (state) => {
         state.createLoading = true;
       })
-      .addCase(createOrder.fulfilled, (state) => {
+      .addCase(addOrder.fulfilled, (state) => {
         state.createLoading = false;
       })
-      .addCase(createOrder.rejected, (state) => {
+      .addCase(addOrder.rejected, (state) => {
         state.createLoading = false;
       });
   },
@@ -56,6 +59,6 @@ const cartSlice = createSlice({
 
 export const cartReducer = cartSlice.reducer;
 
-export const {addDish, deleteDish} = cartSlice.actions;
+export const {addDish, deleteDish, clearCartDishes} = cartSlice.actions;
 
 export const {selectCartDishes} = cartSlice.selectors;
